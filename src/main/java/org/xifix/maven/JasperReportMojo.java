@@ -19,11 +19,8 @@ public class JasperReportMojo extends AbstractMojo
 
     public void execute()
     {
-        if (!outputDir.exists())
-        {
-            //noinspection ResultOfMethodCallIgnored
-            outputDir.mkdirs();
-        }
+        //noinspection ResultOfMethodCallIgnored
+        outputDir.mkdirs();
         getLog().info(String.format("Processing directory: %s", sourceDir.getAbsolutePath()));
         int processed = processFiles(sourceDir);
         getLog().info(String.format("Generated %d files in %s.", processed, outputDir.getAbsolutePath()));
@@ -31,22 +28,17 @@ public class JasperReportMojo extends AbstractMojo
 
     private int processFiles(File directory)
     {
-        File[] files = directory.listFiles();
-        if (files == null)
-        {
-            return 0;
-        }
-
         int processed = 0;
-        for (File file : files)
+        File[] files = directory.listFiles();
+        if (files != null)
         {
-            if (file.isDirectory())
+            for (File file : files)
             {
-                processed += processFiles(file);
-            }
-            else if (file.getName().endsWith(".jrxml"))
-            {
-                if (processJrxml(file))
+                if (file.isDirectory())
+                {
+                    processed += processFiles(file);
+                }
+                else if (processJrxml(file))
                 {
                     processed++;
                 }
@@ -57,10 +49,16 @@ public class JasperReportMojo extends AbstractMojo
 
     private boolean processJrxml(File source)
     {
+        String ext = ".jrxml";
+        if (!source.getName().endsWith(ext))
+        {
+            return false;
+        }
+
         getLog().info(String.format("Compiling %s...", source.getName()));
         String sourcePath = source.getAbsolutePath();
         String targetPath = sourcePath.substring(sourceDir.getAbsolutePath().length());
-        File target = new File(outputDir, targetPath.replace(".jrxml", ".jasper"));
+        File target = new File(outputDir, targetPath.replace(ext, ".jasper"));
         //noinspection ResultOfMethodCallIgnored
         target.getParentFile().mkdirs();
         try
