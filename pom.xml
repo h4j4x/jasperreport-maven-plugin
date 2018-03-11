@@ -7,9 +7,11 @@
     <groupId>org.xifix.maven</groupId>
     <artifactId>jasperreport-maven-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <packaging>maven-plugin</packaging>
+
     <name>Jasper Report Maven Plugin</name>
+    <description>Compiles .jasper from .jrxml.</description>
+    <url>https://github.com/miche-atucha/jasperreport-maven-plugin</url>
 
     <prerequisites>
         <maven>3.5</maven>
@@ -20,6 +22,53 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <scm>
+        <connection>scm:git:https://github.com/miche-atucha/jasperreport-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/miche-atucha/jasperreport-maven-plugin.git</developerConnection>
+        <url>https://github.com/miche-atucha/jasperreport-maven-plugin</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -44,7 +93,6 @@
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
         </license>
     </licenses>
 
@@ -52,6 +100,7 @@
         <developer>
             <id>miche_atucha</id>
             <name>Michel Atucha</name>
+            <email>miche.atucha@gmail.com</email>
         </developer>
     </developers>
 </project>
