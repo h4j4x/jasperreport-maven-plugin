@@ -40,6 +40,7 @@
         </repository>
     </distributionManagement>
 
+    <!--
     <build>
         <plugins>
             <plugin>
@@ -69,6 +70,7 @@
             </plugin>
         </plugins>
     </build>
+    -->
 
     <dependencies>
         <dependency>
