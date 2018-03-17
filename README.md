@@ -11,12 +11,12 @@ Compiles .jasper from .jrxml.
 ```xml
 <project>
     ...
-    <repositories>
-        <repository>
+    <pluginRepositories>
+        <pluginRepository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
