@@ -23,7 +23,7 @@ Compiles .jasper from .jrxml.
             <plugin>
                 <groupId>com.github.miche-atucha</groupId>
                 <artifactId>jasperreport-maven-plugin</artifactId>
-                <version>0.0.1</version>
+                <version>0.0.2</version>
                 <executions>
                     <execution>
                         <id>process</id>
