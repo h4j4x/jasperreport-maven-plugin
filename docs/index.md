@@ -6,8 +6,6 @@ description: Compiles JRXML files (JasperReports XML templates) to .jasper files
 
 [![Build Status](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin.svg?branch=master)](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin) [![](https://jitpack.io/v/miche-atucha/jasperreport-maven-plugin.svg)](https://jitpack.io/#miche-atucha/jasperreport-maven-plugin)
 
-Compiles JRXML files (JasperReports XML templates) to .jasper files.
-
 [JasperReports](https://community.jaspersoft.com/project/jasperreports-library)is an open source Java reporting tool that can write to a variety of targets, such as: screen, a printer, into PDF, HTML, Microsoft Excel, RTF, ODT, Comma-separated values or XML files.
 ## Usage
 ### JitPack
