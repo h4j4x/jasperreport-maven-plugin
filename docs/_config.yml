@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
 title: Jasper Report Maven Plugin
 description: Compiles JRXML files (JasperReports XML templates) to .jasper files.
-show_downloads: true
+show_downloads: "true"
