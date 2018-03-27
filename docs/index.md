@@ -4,7 +4,7 @@ title: Jasper Report Maven Plugin
 description: Compiles JRXML files (JasperReports XML templates) to .jasper files.
 ---
 
-[![Build Status](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin.svg?branch=master)](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin) [![](https://jitpack.io/v/miche-atucha/jasperreport-maven-plugin.svg)](https://jitpack.io/#miche-atucha/jasperreport-maven-plugin)
+[![Build Status](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin.svg?branch=master)](https://travis-ci.org/miche-atucha/jasperreport-maven-plugin) [![](https://jitpack.io/v/miche-atucha/jasperreport-maven-plugin.svg)](https://jitpack.io/#miche-atucha/jasperreport-maven-plugin) [![](https://img.shields.io/maven-central/v/org.xifix.maven/jasperreport-maven-plugin.svg)](https://mvnrepository.com/artifact/org.xifix.maven/jasperreport-maven-plugin)
 
 [JasperReports](https://community.jaspersoft.com/project/jasperreports-library) is an open source Java reporting tool that can write to a variety of targets, such as: screen, a printer, into PDF, HTML, Microsoft Excel, RTF, ODT, Comma-separated values or XML files.
 ## Maven usage
@@ -18,7 +18,7 @@ description: Compiles JRXML files (JasperReports XML templates) to .jasper files
             <plugin>
                 <groupId>org.xifix.maven</groupId>
                 <artifactId>jasperreport-maven-plugin</artifactId>
-                <version>0.0.3</version>
+                <version>0.0.5</version>
                 <executions>
                     <execution>
                         <id>process</id>
