@@ -14,7 +14,7 @@ public class JasperReportMojo extends AbstractMojo
     @Parameter(required = true)
     private File sourceDir;
 
-    @Parameter(defaultValue = "${project.build.outputDirectory}/jasper")
+    @Parameter(required = true)
     private File outputDir;
 
     public void execute()
@@ -67,9 +67,11 @@ public class JasperReportMojo extends AbstractMojo
             getLog().info(String.format("Generated %s.", target.getName()));
             return true;
         }
-        catch (JRException e)
+        catch (JRException ex)
         {
-            getLog().error(String.format("Could not process %s", source.getName()));
+            String message = String.format("Could not process %s, error: %s",
+                                           source.getName(), ex.getMessage());
+            getLog().error(message);
             return false;
         }
     }
