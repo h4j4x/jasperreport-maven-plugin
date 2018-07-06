@@ -4,9 +4,11 @@ package org.xifix.maven;
 import java.io.File;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 @Mojo(name = "generate-jasper")
 public class JasperReportMojo extends AbstractMojo
@@ -17,6 +19,9 @@ public class JasperReportMojo extends AbstractMojo
     @Parameter(required = true)
     private File outputDir;
 
+    @Parameter(defaultValue = "${project}", readonly = true, required = true)
+    private MavenProject project;
+
     public void execute()
     {
         //noinspection ResultOfMethodCallIgnored
@@ -24,6 +29,9 @@ public class JasperReportMojo extends AbstractMojo
         getLog().info(String.format("Processing directory: %s", sourceDir.getAbsolutePath()));
         int processed = processFiles(sourceDir);
         getLog().info(String.format("Generated %d files in %s.", processed, outputDir.getAbsolutePath()));
+        Resource res = new Resource();
+        res.setDirectory(outputDir.getAbsolutePath());
+        project.addResource(res);
     }
 
     private int processFiles(File directory)
